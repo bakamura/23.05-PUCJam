@@ -12,9 +12,12 @@ public class EntityProperties {
 
     protected int _healthMax;
     protected int _healthCurrent;
-    public UnityEvent _onStand; // Change for a delegate?
-    public UnityEvent _onDamaged; // Use accessors
-    public UnityEvent _onFall;
+    private UnityEvent _onStand; // Change for a delegate?
+    public UnityEvent OnStand { get { return _onStand; } } // Change for a delegate?
+    private UnityEvent _onDamaged;
+    public UnityEvent OnDamaged;
+    private UnityEvent _onFall;
+    public UnityEvent OnFall;
 
     public void TakeHeal(int heal) {
         if (heal < 0) {

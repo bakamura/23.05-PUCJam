@@ -6,7 +6,9 @@ public class P_ : MonoBehaviour, IEntity  {
     public EntityProperties EntityProperties { get { return _eProperties; } }
 
     private void Start() {
-        _eProperties._onFall;
+        _eProperties.OnStand.AddListener(Stand);
+        _eProperties.OnDamaged.AddListener(Damaged);
+        _eProperties.OnFall.AddListener(Fall);
     }
 
     private void Stand() {
