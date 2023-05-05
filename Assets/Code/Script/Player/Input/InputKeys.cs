@@ -1,7 +1,7 @@
 using UnityEngine;
 
-[SerializeField]
-public class InputKeys : MonoBehaviour {
+[System.Serializable]
+public class InputKeys {
 
     public KeyCode LeftMovement;
     public KeyCode RightMovement;

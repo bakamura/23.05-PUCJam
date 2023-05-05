@@ -139,7 +139,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!114 &964908765
 MonoBehaviour:
@@ -206,7 +206,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!156049354 &988486629
 Grid:
@@ -430,9 +430,12 @@ GameObject:
   m_Component:
   - component: {fileID: 1968506631}
   - component: {fileID: 1968506630}
+  - component: {fileID: 1968506637}
   - component: {fileID: 1968506633}
   - component: {fileID: 1968506632}
   - component: {fileID: 1968506634}
+  - component: {fileID: 1968506635}
+  - component: {fileID: 1968506636}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -548,7 +551,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 2
   m_Material: {fileID: 0}
   m_Interpolate: 1
   m_SleepingMode: 1
@@ -566,7 +569,61 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eeef97b49b0f0734da76613f24b8a7d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _keys: {fileID: 0}
+  _keys:
+    LeftMovement: 276
+    RightMovement: 275
+    Jump: 32
+    Heal: 120
+    Dodge: 122
+  _rememberKeyPress: 0.15
+--- !u!114 &1968506635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1968506629}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 742050517e5af164db42650fd5513749, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _movementSpeed: 5
+  _jumpSpeed: 9
+  _groundCheckPoint: {x: 0, y: -0.525}
+  _groundCheckBox: {x: 0.8, y: 0.05}
+  _groundCheckMask:
+    serializedVersion: 2
+    m_Bits: 8
+--- !u!114 &1968506636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1968506629}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1030ca485a7b454b9f5a9f27f5aad14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _healPower: 2
+  _dodgeDistance: 1.5
+  _dodgeIFrameDuration: 0.5
+--- !u!114 &1968506637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1968506629}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05812493de7f60a46be520e2f788a33b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animation:
+  - {fileID: 11400000, guid: cb3d027042d507f478df4934f4862434, type: 2}
 --- !u!1 &1981981426
 GameObject:
   m_ObjectHideFlags: 0
@@ -581,7 +638,7 @@ GameObject:
   - component: {fileID: 1981981430}
   - component: {fileID: 1981981429}
   - component: {fileID: 1981981428}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Physic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
