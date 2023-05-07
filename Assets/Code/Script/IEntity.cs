@@ -20,16 +20,16 @@ public class EntityProperties {
     public UnityEvent OnFall;
 
     public void TakeHeal(int heal) {
-        if (heal < 0) {
-            Debug.LogWarning("Heal cannot be a negative value!");
+        if (heal <= 0) {
+            Debug.LogWarning("Heal cannot be 0 or less!");
             return;
         }
-        if (heal > 0 && _healthCurrent <= 0) _onStand.Invoke();
+        if (_healthCurrent <= 0) _onStand.Invoke();
         _healthCurrent = Mathf.Clamp(_healthCurrent + heal, 0, _healthMax);
     }
 
     public void TakeDamage(int damage) {
-        if (damage < 0) {
+        if (damage <= 0) {
             Debug.LogWarning("Damage cannot be a negative value!");
             return;
         }
