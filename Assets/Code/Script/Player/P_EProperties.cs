@@ -1,26 +1,40 @@
+using System.Collections;
 using UnityEngine;
 
-public class P_ : MonoBehaviour, IEntity  {
+public class P_EProperties : EntityProperties {
 
-    private EntityProperties _eProperties;
-    public EntityProperties EntityProperties { get { return _eProperties; } }
+    [Header("Cache")]
 
-    private void Start() {
-        _eProperties.OnStand.AddListener(Stand);
-        _eProperties.OnDamaged.AddListener(Damaged);
-        _eProperties.OnFall.AddListener(Fall);
-    }
+    private WaitForSeconds _damagedWait;
 
-    private void Stand() {
-        // Impossible?
+    protected override void Start() {
+        base.Start();
+
+        _onDamaged.AddListener(Damaged);
+        _onFallen.AddListener(Fall);
+        _onHealthChange.AddListener(HealthChange);
+
+        _damagedWait = new WaitForSeconds(P_Animation.Instance.GetAnimationDuration(P_Animation.P_DAMAGED));
     }
 
     private void Damaged() {
-        // Lose control for mseconds?
+        StartCoroutine(DamagedCoroutine());
+    }
+
+    private IEnumerator DamagedCoroutine() {
+        P_Movement.Instance.enabled = false;
+        
+        yield return _damagedWait;
+
+        P_Movement.Instance.enabled = true; // Check if is paused before
     }
 
     private void Fall() {
-        // Wait for Animation
-        // Show UI
+        P_Movement.Instance.RigidBody2D.simulated = false;
+        // After, UI
+    }
+
+    private void HealthChange() {
+        // Update UI
     }
 }

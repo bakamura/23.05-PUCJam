@@ -10,10 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7244b8427c8ddaa43972d7581851e659, type: 3}
-  m_Name: PlayerIdle
+  m_Name: P_Heal
   m_EditorClassIdentifier: 
   sprites:
   - {fileID: 0}
   - {fileID: 0}
-  speed: 1
-  loop: 1
+  - {fileID: 0}
+  - {fileID: 0}
+  speed: 4
+  loop: 0

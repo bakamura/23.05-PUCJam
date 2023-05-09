@@ -4,10 +4,10 @@ using UnityEngine;
 
 public abstract class AnimationHandler : MonoBehaviour {
 
-    [SerializeField] private Animation[] _animation;
+    [SerializeField] protected Animation[] _animation;
     protected Dictionary<string, int> _animationDict = new Dictionary<string, int>();
     private WaitForSeconds[] _animationWait;
-    private int _currentAnimation;
+    protected int _currentAnimation = -1; // Starts negative for the comparison in ChangeAnimation
     private int _currentFrame;
 
     [Header("Cache")]
@@ -27,7 +27,7 @@ public abstract class AnimationHandler : MonoBehaviour {
     }
 
     protected void ChangeFrame() {
-        if (_currentFrame++ >= _animation[_currentAnimation].sprites.Length) {
+        if (++_currentFrame >= _animation[_currentAnimation].sprites.Length) {
             if (_animation[_currentAnimation].loop) _currentFrame = 0;
             else return;
         }

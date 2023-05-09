@@ -9,7 +9,9 @@ public class InputHandler : Singleton<InputHandler> {
     private float _heal = 0;
     public bool Heal { get { isTrue = _heal > 0; if (isTrue) _heal = 0; return isTrue; } }
     private float _dodge = 0;
-    public bool Dodge { get { isTrue = _heal > 0; if (isTrue) _heal = 0; return isTrue; } }
+    public bool Dodge { get { isTrue = _dodge > 0; if (isTrue) _dodge = 0; return isTrue; } }
+    private float _interact = 0;
+    public bool Interact { get { isTrue = _interact > 0; if (isTrue) _interact = 0; return isTrue; } }
 
     [SerializeField] private InputKeys _keys;
     [SerializeField] private float _rememberKeyPress;
