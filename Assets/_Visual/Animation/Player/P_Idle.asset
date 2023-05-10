@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: P_Idle
   m_EditorClassIdentifier: 
   sprites:
-  - {fileID: 21300000, guid: 197997b2d0f251c4eb876017430d234f, type: 3}
-  - {fileID: 21300000, guid: 197997b2d0f251c4eb876017430d234f, type: 3}
-  speed: 3
+  - {fileID: 877937455, guid: 6beb365af03fa494c825694ebb0efede, type: 3}
+  - {fileID: -2023819686, guid: 6beb365af03fa494c825694ebb0efede, type: 3}
+  - {fileID: -1423354724, guid: 6beb365af03fa494c825694ebb0efede, type: 3}
+  - {fileID: 358670442, guid: 6beb365af03fa494c825694ebb0efede, type: 3}
+  speed: 0.75
   loop: 1
