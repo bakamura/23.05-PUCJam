@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: P_Run
   m_EditorClassIdentifier: 
   sprites:
-  - {fileID: 21300000, guid: 2cab6bfd5fadc3441ab6cde26c34bdf2, type: 3}
-  - {fileID: 21300000, guid: 7b5d181f13806fb4b846eea414696164, type: 3}
-  - {fileID: 21300000, guid: 2cab6bfd5fadc3441ab6cde26c34bdf2, type: 3}
-  - {fileID: 21300000, guid: 7b5d181f13806fb4b846eea414696164, type: 3}
+  - {fileID: -1718281092, guid: d160aa16ebc920041847b0853c5527fa, type: 3}
+  - {fileID: 207509871, guid: d160aa16ebc920041847b0853c5527fa, type: 3}
+  - {fileID: -1625675044, guid: d160aa16ebc920041847b0853c5527fa, type: 3}
+  - {fileID: -441147748, guid: d160aa16ebc920041847b0853c5527fa, type: 3}
   speed: 4
   loop: 1
