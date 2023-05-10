@@ -77,10 +77,10 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 197997b2d0f251c4eb876017430d234f, type: 3}
+  m_SortingLayerID: -130233823
+  m_SortingLayer: 1
+  m_SortingOrder: 1
+  m_Sprite: {fileID: 877937455, guid: 6beb365af03fa494c825694ebb0efede, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -147,7 +147,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.025}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -158,7 +158,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.7, y: 0.8}
+  m_Size: {x: 0.1, y: 0.75}
   m_EdgeRadius: 0.1
 --- !u!114 &2779191369386481638
 MonoBehaviour:
@@ -206,10 +206,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 742050517e5af164db42650fd5513749, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _movementSpeed: 3.5
-  _jumpSpeed: 9
+  _movementSpeed: 3.75
+  _jumpSpeed: 9.75
   _groundCheckPoint: {x: 0, y: -0.525}
-  _groundCheckBox: {x: 0.8, y: 0.05}
+  _groundCheckBox: {x: 0.3, y: 0.05}
   _groundCheckMask:
     serializedVersion: 2
     m_Bits: 8
@@ -233,7 +233,7 @@ MonoBehaviour:
   _healEffectDuration: 1
   _dodgeDistance: 1.5
   _dodgeIFrameDuration: 0.5
-  _interactRange: 0.6
+  _interactRange: 0.4
   _interactLayer:
     serializedVersion: 2
     m_Bits: 256

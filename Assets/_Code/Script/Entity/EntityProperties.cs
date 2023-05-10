@@ -27,7 +27,10 @@ public class EntityProperties : MonoBehaviour {
             Debug.LogWarning("Heal cannot be 0 or less!");
             return;
         }
-        if (_healthCurrent <= 0) _onStand?.Invoke();
+        if (_healthCurrent <= 0) {
+            _onStand?.Invoke();
+            _standing = true;
+        }
         _healthCurrent = Mathf.Clamp(_healthCurrent + heal, 0, _healthMax);
         _onHealthChange?.Invoke();
     }
@@ -38,7 +41,10 @@ public class EntityProperties : MonoBehaviour {
             return;
         }
         _healthCurrent = Mathf.Clamp(_healthCurrent - damage, 0, _healthMax);
-        if (_healthCurrent <= 0) _onFallen?.Invoke();
+        if (_healthCurrent <= 0) {
+            _onFallen?.Invoke();
+            _standing = true;
+        }
         _onDamaged?.Invoke();
         _onHealthChange?.Invoke();
     }
