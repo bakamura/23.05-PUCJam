@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7244b8427c8ddaa43972d7581851e659, type: 3}
+  m_Name: P_Fallen
+  m_EditorClassIdentifier: 
+  sprites:
+  - {fileID: 21300000, guid: d15ebbf426844834f86b0e51a649a67c, type: 3}
+  - {fileID: 21300000, guid: d15ebbf426844834f86b0e51a649a67c, type: 3}
+  - {fileID: 21300000, guid: 4db2460c6bcce584b99fff72172cbefc, type: 3}
+  speed: 4
+  loop: 0
