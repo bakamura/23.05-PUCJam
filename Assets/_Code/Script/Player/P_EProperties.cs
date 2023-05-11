@@ -8,6 +8,10 @@ public class P_EProperties : EntityProperties {
     private int _keyAmount = 0;
     public int KeyAmount { get { return _keyAmount; } set { _keyAmount = value; } }
 
+    // Accessors
+
+    public int HealthCurrent { get { return _healthCurrent; } }
+
     [Header("Cache")]
 
     private WaitForSeconds _damagedWait;
@@ -26,7 +30,6 @@ public class P_EProperties : EntityProperties {
     }
 
     private IEnumerator DamagedCoroutine() {
-        _onDamaged.Invoke();
         P_Movement.Instance.enabled = false;
 
         yield return _damagedWait;
@@ -35,12 +38,7 @@ public class P_EProperties : EntityProperties {
     }
 
     private void Fall() {
-        _onFallen.Invoke();
         P_Movement.Instance.RigidBody2D.simulated = false;
         // After, UI
-    }
-
-    public float CurrentHealthFromTotal() {
-        return _healthCurrent / _healthMax;
     }
 }

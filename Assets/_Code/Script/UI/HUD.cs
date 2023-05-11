@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -15,7 +16,9 @@ public class HUD : UI {
 
     [Header("HUD")]
 
-    [SerializeField] private Image _healthImage;
+    [SerializeField] private Image[] _healthImages;
+    [SerializeField] private Sprite _healthFull;
+    [SerializeField] private Sprite _healthHalf;
 
     [Header("Pause")]
 
@@ -25,6 +28,7 @@ public class HUD : UI {
 
     private List<MonoBehaviour> _behavioursToPause = new List<MonoBehaviour>();
     private P_EProperties _playerProperties;
+    private Color _transparent = new Color(0, 0, 0, 0);
 
     private void Start() {
         _playerProperties = FindObjectOfType<P_EProperties>();
@@ -62,6 +66,19 @@ public class HUD : UI {
     }
 
     private void UpdateHealthBar() {
-        _healthImage.fillAmount = _playerProperties.CurrentHealthFromTotal();
+        int playerHealth = _playerProperties.HealthCurrent;
+        for (int i = 0; i < _healthImages.Length; i++) {
+            if (playerHealth > 1) {
+                playerHealth -= 2;
+                _healthImages[i].sprite = _healthFull;
+                _healthImages[i].color = Color.white;
+            }
+            else if (playerHealth > 0) {
+                playerHealth -= 1;
+                _healthImages[i].sprite = _healthHalf;
+                _healthImages[i].color = Color.white;
+            }
+            else _healthImages[i].color = _transparent;
+        }
     }
 }
