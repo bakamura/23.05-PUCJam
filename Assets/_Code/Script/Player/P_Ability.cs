@@ -24,6 +24,8 @@ public class P_Ability : Singleton<P_Ability> {
 
     [SerializeField] private float _dodgeDistance;
     [SerializeField] private float _dodgeIFrameDuration;
+    private LayerMask _defaultLayer;
+    //[SerializeField] private LayerMask _dodgeLayer;
 
     [Header("Interact")]
 
@@ -60,6 +62,8 @@ public class P_Ability : Singleton<P_Ability> {
         _healEffect.SetActive(false);
         _healEffectRenderer = _healEffect.GetComponent<SpriteRenderer>();
 
+        _defaultLayer = gameObject.layer;
+
         _healWait = new WaitForSeconds(_healDelay);
         _healRecoilWait = new WaitForSeconds(P_Animation.Instance.GetAnimationDuration(P_Animation.P_HEAL) - _healDelay);
         _dodgeIFrameWait = new WaitForSeconds(_dodgeIFrameDuration);
@@ -93,11 +97,13 @@ public class P_Ability : Singleton<P_Ability> {
         _onDodge?.Invoke();
         P_Movement.Instance.enabled = false;
         P_Movement.Instance.RigidBody2D.velocity = -Physics2D.gravity.y * (_dodgeIFrameDuration / _dodgeDistance) * ((InputHandler.Instance.Movement != 0 ? InputHandler.Instance.Movement < 0 : P_Animation.Instance.SpriteRenderer.flipX) ? Vector2.left : Vector2.right);
+        gameObject.layer = LayerMask.NameToLayer("Ignore Raycast"); //
 
         yield return _dodgeIFrameWait;
 
         // Stuff
         P_Movement.Instance.RigidBody2D.velocity = Vector2.zero;
+        gameObject.layer = _defaultLayer;
 
         yield return _dodgeRecoilWait;
 

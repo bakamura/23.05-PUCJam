@@ -34,10 +34,13 @@ public class BoarBehaviour : HostileBehaviour {
 
     private void Awake() {
         _rb = GetComponent<Rigidbody2D>();
-        _playerProperties = P_Movement.Instance.GetComponent<P_EProperties>();
 
         _idleWait = new WaitForSeconds(_idleDuration);
         _movementWait = new WaitForSeconds(_movementDuration);
+    }
+
+    private void Start() {
+        _playerProperties = P_Movement.Instance.GetComponent<P_EProperties>();
     }
 
     private void OnEnable() {
