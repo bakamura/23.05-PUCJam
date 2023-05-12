@@ -8,6 +8,7 @@ public class PersonNormal : EntityProperties {
     protected override void Start() {
         base.Start();
 
+        if (!_standing) _onFallen?.Invoke();
         if (_hasKey) _onStand.AddListener(GiveKey);
         if (_attachedEntity != null) {
             _attachedEntity = Instantiate(_attachedEntity);

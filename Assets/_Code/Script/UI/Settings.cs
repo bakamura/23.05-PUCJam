@@ -14,7 +14,7 @@ public class Settings : MonoBehaviour {
     private const string VOL_SFX = "Vol_SFX";
 
     private void ChangeVolume(string group, float volume) {
-        _am.SetFloat(group, volume);
+        _am.SetFloat(group, MathF.Log10(volume) * 20f); // 20 + (MathF.Log10(volume) * 25f
     }
 
     public void ChangeMusicVolume(float volume) {
@@ -22,6 +22,6 @@ public class Settings : MonoBehaviour {
     }
 
     public void ChangeSFXVolume(float volume) {
-        ChangeVolume(VOL_SFX, 20 + (MathF.Log10(volume) * 25f));
+        ChangeVolume(VOL_SFX, volume);
     }
 }

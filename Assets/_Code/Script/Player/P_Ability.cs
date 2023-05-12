@@ -59,7 +59,8 @@ public class P_Ability : Singleton<P_Ability> {
     private WaitForSeconds _interactWait;
 
     private void Start() {
-        GameObject go = Instantiate(_healEffect, transform); // Pool of only one
+        GameObject go = Instantiate(_healEffect,
+            transform); // Pool of only one
         go.transform.parent = null;
         _healEffect = go;
         _healEffect.SetActive(false);

@@ -13,6 +13,9 @@ public abstract class AudioHandler : MonoBehaviour {
 
     protected virtual void Awake() {
         _as = GetComponent<AudioSource>();
+
+        for (int i = 0; i < _SFXs.Length; i++) _SFXDict.Add(_SFXs[i].name, i);
+
     }
 
     protected void PlaySound(string name) {

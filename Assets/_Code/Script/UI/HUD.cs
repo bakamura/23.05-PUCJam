@@ -100,6 +100,7 @@ public class HUD : UI {
 
     private IEnumerator FadeChangeScene(int sceneID) {
         P_Movement.Instance.enabled = false;
+        P_Movement.Instance.RigidBody2D.velocity = Vector2.zero;
         P_Ability.Instance.enabled = false;
 
         while (_fadeCanvas.alpha < 1) {

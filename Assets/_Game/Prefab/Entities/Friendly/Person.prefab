@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2535911517329600790}
   - component: {fileID: 2535911517329600787}
   - component: {fileID: 4320565219991673424}
+  - component: {fileID: 2998764759736840156}
   - component: {fileID: 2535911517329600791}
   m_Layer: 7
   m_Name: Person
@@ -134,6 +135,21 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.1, y: 0.75}
   m_EdgeRadius: 0.1
+--- !u!114 &2998764759736840156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2535911517329600788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1e5481ae9f157f4fae8a6d3f971fd2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animation:
+  - {fileID: 11400000, guid: 0825e689e3dd90145b2289a284b03289, type: 2}
+  - {fileID: 11400000, guid: 26092777fbbd5e642baf1ba04e5d09ed, type: 2}
 --- !u!114 &2535911517329600791
 MonoBehaviour:
   m_ObjectHideFlags: 0

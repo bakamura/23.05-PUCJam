@@ -224,7 +224,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _SFXs:
-  - {fileID: 0}
+  - {fileID: 8300000, guid: 726c27bae3c360e428b7bbae6cd7deee, type: 3}
   - {fileID: 8300000, guid: a8f030b64b9250b42a437f19c86fab71, type: 3}
   - {fileID: 8300000, guid: 979935edaae42c34abd60eca1973aac6, type: 3}
 --- !u!50 &2779191369386481637

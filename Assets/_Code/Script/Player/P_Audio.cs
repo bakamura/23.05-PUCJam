@@ -7,7 +7,7 @@ public class P_Audio : AudioHandler {
     private void Start() {
         P_Movement.Instance.OnJump.AddListener(JumpSFX);
         P_Ability.Instance.OnHeal.AddListener(HealSFX);
-        P_Ability.Instance.OnDodge.AddListener(JumpSFX);
+        P_Ability.Instance.OnDodge.AddListener(DodgeSFX);
     }
 
     private void JumpSFX() {
