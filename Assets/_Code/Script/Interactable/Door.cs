@@ -4,7 +4,7 @@ public class Door : Interactable {
 
     [Header("Door")]
 
-    private bool _locked;
+    [SerializeField] private bool _locked;
     public bool Locked { get { return _locked; } }
 
     [Header("Change Scene")]
