@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Obsessive_Attack
   m_EditorClassIdentifier: 
   sprites:
-  - {fileID: 21300000, guid: 9cf40814163bc7f4b95af600b85c4a5a, type: 3}
+  - {fileID: -1426019107, guid: 24f716774ad69c143bf343e5886691b7, type: 3}
   speed: 1
   loop: 1
