@@ -12,6 +12,7 @@ public class BoarBehaviour : HostileBehaviour {
     [Header("Attack")]
 
     [SerializeField] private int _damage;
+    [SerializeField] private Vector2 _hitBoxOffset;
     [SerializeField] private Vector2 _hitBox;
     [SerializeField] private LayerMask _playerLayer;
     private bool _hasHit;
@@ -58,7 +59,7 @@ public class BoarBehaviour : HostileBehaviour {
             case BoarState.Movement:
                 // Doesn't consider it can fall
                 _rb.velocity = _movementSpeed * (_movementDirection ? Vector2.right : Vector2.left);
-                if (!_hasHit && Physics2D.OverlapBox(transform.position, _hitBox, 0, _playerLayer)) {
+                if (!_hasHit && Physics2D.OverlapBox((Vector2)transform.position + _hitBoxOffset, _hitBox, 0, _playerLayer)) {
                     P_EProperties.Instance.TakeDamage(_damage);
                     _hasHit = true;
                 }

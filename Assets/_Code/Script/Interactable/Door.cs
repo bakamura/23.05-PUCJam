@@ -19,8 +19,8 @@ public class Door : Interactable {
         if (_locked) {
             if (P_EProperties.Instance.KeyAmount > 0) {
                 P_EProperties.Instance.KeyAmount--;
+                GetComponentInChildren<SpriteRenderer>().flipX = true;
                 _locked = false;
-                GetComponentInChildren<SpriteRenderer>().flipX = false;
             }
         }
         if(!_locked) FindObjectOfType<HUD>().ChangeScene(_sceneToGo);

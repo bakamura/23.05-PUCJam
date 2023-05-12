@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 1593647551565991347}
   - component: {fileID: 1593647551565991348}
   - component: {fileID: 1593647551565991345}
-  - component: {fileID: 1593647551565991341}
   - component: {fileID: 1003184377}
+  - component: {fileID: 1593647551565991341}
+  - component: {fileID: 7129625628714020852}
   m_Layer: 7
   m_Name: Brute
   m_TagString: Untagged
@@ -108,26 +109,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &1593647551565991341
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1593647551565991350}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe33de895320750448a41ef68c912c4c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _healthMax: 5
-  _standing: 1
-  _movementSpeed: 3
-  _detectRange: 5
-  _catchRange: 0.65
-  _hostileLayer:
-    serializedVersion: 2
-    m_Bits: 256
 --- !u!61 &1003184377
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -154,3 +135,35 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.5, y: 0.8}
   m_EdgeRadius: 0.1
+--- !u!114 &1593647551565991341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1593647551565991350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe33de895320750448a41ef68c912c4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _healthMax: 5
+  _standing: 1
+--- !u!114 &7129625628714020852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1593647551565991350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d9b39c93caefb54b8e7f02d2fdbc8b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _movementSpeed: 3
+  _detectRange: 5
+  _catchRange: 0.65
+  _hostileLayer:
+    serializedVersion: 2
+    m_Bits: 256

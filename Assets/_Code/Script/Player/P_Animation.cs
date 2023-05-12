@@ -13,7 +13,7 @@ public class P_Animation : AnimationHandler {
     private const string P_JUMP = "P_Jump";
     private const string P_FALL = "P_Fall";
     public const string P_DAMAGED = "P_Damaged";
-    private const string P_FALLEN = "P_Fallen";
+    public const string P_FALLEN = "P_Fallen";
     public const string P_HEAL = "P_Heal";
     public const string P_DODGE = "P_Dodge";
     public const string P_INTERACT = "P_Interact";

@@ -32,7 +32,6 @@ public class P_EProperties : EntityProperties {
         base.Start();
 
         _onDamaged.AddListener(Damaged);
-        _onFallen.AddListener(Fall);
 
         _damagedWait = new WaitForSeconds(P_Animation.Instance.GetAnimationDuration(P_Animation.P_DAMAGED));
     }
@@ -47,11 +46,6 @@ public class P_EProperties : EntityProperties {
 
         yield return _damagedWait;
 
-        P_Movement.Instance.enabled = true; // Check if is paused before
-    }
-
-    private void Fall() {
-        P_Movement.Instance.RigidBody2D.simulated = false;
-        // After, UI
+        if(_healthCurrent > 0) P_Movement.Instance.enabled = true; // Check if is paused before
     }
 }

@@ -6,11 +6,14 @@ public class EntityProperties : MonoBehaviour {
     [SerializeField] protected int _healthMax;
     protected int _healthCurrent = 0;
     [SerializeField] protected bool _standing = true;
+    public bool Standing { get { return _standing; } }
 
     [Header("Events")]
 
     protected UnityEvent _onStand = new UnityEvent();
-    public UnityEvent OnStand { get { return _onStand; } } 
+    public UnityEvent OnStand { get { return _onStand; } }
+    protected UnityEvent _onHealed = new UnityEvent();
+    public UnityEvent OnHealed { get { return _onHealed; } }
     protected UnityEvent _onDamaged = new UnityEvent();
     public UnityEvent OnDamaged { get { return _onDamaged; } }
     protected UnityEvent _onFallen = new UnityEvent();
@@ -27,11 +30,12 @@ public class EntityProperties : MonoBehaviour {
             Debug.LogWarning("Heal cannot be 0 or less!");
             return;
         }
-        if (_healthCurrent <= 0) {
+        _healthCurrent = Mathf.Clamp(_healthCurrent + heal, 0, _healthMax);
+        _onHealed?.Invoke();
+        if (_healthCurrent > 0) {
             _onStand?.Invoke();
             _standing = true;
         }
-        _healthCurrent = Mathf.Clamp(_healthCurrent + heal, 0, _healthMax);
         _onHealthChange?.Invoke();
     }
 
@@ -41,11 +45,11 @@ public class EntityProperties : MonoBehaviour {
             return;
         }
         _healthCurrent = Mathf.Clamp(_healthCurrent - damage, 0, _healthMax);
+        _onDamaged?.Invoke();
         if (_healthCurrent <= 0) {
             _onFallen?.Invoke();
             _standing = true;
         }
-        _onDamaged?.Invoke();
         _onHealthChange?.Invoke();
     }
 }

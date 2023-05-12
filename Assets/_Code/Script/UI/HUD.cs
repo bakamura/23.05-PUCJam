@@ -28,11 +28,16 @@ public class HUD : UI {
     [SerializeField] private CanvasGroup _fadeCanvas;
     [SerializeField] private float _fadeHalfDuration;
 
+    [Header("Fallen Screen")]
+
+    [SerializeField] private CanvasGroup _fallenCanvas;
+
     [Header("Cache")]
 
     private List<MonoBehaviour> _behavioursToPause = new List<MonoBehaviour>();
     private P_EProperties _playerProperties;
     private Color _transparent = new Color(0, 0, 0, 0);
+    private WaitForSeconds _fallenWait;
 
     private void Start() {
         _playerProperties = FindObjectOfType<P_EProperties>();
@@ -45,6 +50,8 @@ public class HUD : UI {
             if(behaviours.Length > 0) foreach (MonoBehaviour behaviour in behaviours) if (behaviour.GetType() != typeof(Transform) && behaviour.GetType() != typeof(SpriteRenderer) &&
                 behaviour.GetType() != typeof(Rigidbody2D) && behaviour.GetType() != typeof(Collider2D)) _behavioursToPause.Add(behaviour);
         }
+        _fallenWait = new WaitForSeconds(P_Animation.Instance.GetAnimationDuration(P_Animation.P_FALLEN));
+        P_EProperties.Instance.OnFallen.AddListener(FadeFallen);
     }
 
     public void PauseGame(bool isPaused) {
@@ -88,20 +95,24 @@ public class HUD : UI {
 
     public void ChangeScene(int id) {
         StartCoroutine(FadeChangeScene(id));
+        GameManager.currentRespawn = P_Movement.Instance.transform.position;
     }
 
     private IEnumerator FadeChangeScene(int sceneID) {
-        P_Movement.Instance.gameObject.SetActive(false);
-        P_Ability.Instance.gameObject.SetActive(false);
-        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneID, LoadSceneMode.Additive);
+        P_Movement.Instance.enabled = false;
+        P_Ability.Instance.enabled = false;
 
-        while (_fadeCanvas.alpha < 1 && !asyncLoad.isDone) {
+        while (_fadeCanvas.alpha < 1) {
             _fadeCanvas.alpha += Time.deltaTime / _fadeHalfDuration;
          
             yield return null;
         }
 
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneID, LoadSceneMode.Additive);
         Scene sceneToUnload = SceneManager.GetActiveScene();
+
+        while (!asyncLoad.isDone) yield return null;
+
         SceneManager.SetActiveScene(SceneManager.GetSceneByBuildIndex(sceneID));
         SceneManager.UnloadSceneAsync(sceneToUnload);
 
@@ -110,5 +121,33 @@ public class HUD : UI {
 
             yield return null;
         }
+
+        P_Movement.Instance.enabled = true;
+        P_Ability.Instance.enabled = true;
+    }
+
+    private void FadeFallen() {
+        StartCoroutine(FadeFallenRoutine());
+    }
+
+    private IEnumerator FadeFallenRoutine() {
+        yield return _fallenWait;
+
+        while (_fadeCanvas.alpha < 1) { //
+            _fadeCanvas.alpha += Time.deltaTime / _fadeHalfDuration; //
+
+            yield return null;
+        }
+
+        P_Movement.Instance.transform.position = GameManager.currentRespawn;
+        P_EProperties.Instance.TakeHeal(10);
+
+        while (_fadeCanvas.alpha > 0) { //
+            _fadeCanvas.alpha -= Time.deltaTime / _fadeHalfDuration; //
+
+            yield return null;
+        }
+
+        P_Movement.Instance.enabled = true;
     }
 }

@@ -1,13 +1,17 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour {
 
     public void PlayBtn() {
+        StartCoroutine(EnterGame());
+    }
+
+    private IEnumerator EnterGame() { //provisry
+        SceneManager.LoadScene(2, LoadSceneMode.Single);
         SceneManager.LoadScene(1, LoadSceneMode.Additive);
-        SceneManager.LoadScene(2, LoadSceneMode.Additive);
-        SceneManager.SetActiveScene(SceneManager.GetSceneByBuildIndex(2));
-        SceneManager.UnloadScene(0);
+        yield return null;
     }
 
     public void QuitBtn() {
