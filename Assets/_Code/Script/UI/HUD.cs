@@ -18,6 +18,7 @@ public class HUD : UI {
     [SerializeField] private Image[] _healthImages;
     [SerializeField] private Sprite _healthFull;
     [SerializeField] private Sprite _healthHalf;
+    [SerializeField] private Image _keyImage;
 
     [Header("Pause")]
 
@@ -27,10 +28,6 @@ public class HUD : UI {
 
     [SerializeField] private CanvasGroup _fadeCanvas;
     [SerializeField] private float _fadeHalfDuration;
-
-    [Header("Fallen Screen")]
-
-    [SerializeField] private CanvasGroup _fallenCanvas;
 
     [Header("Cache")]
 
@@ -91,6 +88,10 @@ public class HUD : UI {
             }
             else _healthImages[i].color = _transparent;
         }
+    }
+
+    public void UpdateKey() {
+        _keyImage.enabled = P_EProperties.Instance.KeyAmount > 0;
     }
 
     public void ChangeScene(int id) {

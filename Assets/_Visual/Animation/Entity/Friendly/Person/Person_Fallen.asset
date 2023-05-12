@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7244b8427c8ddaa43972d7581851e659, type: 3}
-  m_Name: PersonFallen
+  m_Name: Person_Fallen
   m_EditorClassIdentifier: 
   sprites:
   - {fileID: 21300000, guid: 4e2b9f2805fccbd43b2c217388c78ff3, type: 3}

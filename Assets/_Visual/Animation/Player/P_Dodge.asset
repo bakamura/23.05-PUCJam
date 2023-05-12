@@ -13,9 +13,8 @@ MonoBehaviour:
   m_Name: P_Dodge
   m_EditorClassIdentifier: 
   sprites:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  speed: 4
+  - {fileID: 1280325413, guid: 8f9d6d19895861e4386faa9d1c5cc616, type: 3}
+  - {fileID: -1552250375, guid: 8f9d6d19895861e4386faa9d1c5cc616, type: 3}
+  - {fileID: -1612004934, guid: 8f9d6d19895861e4386faa9d1c5cc616, type: 3}
+  speed: 4.3
   loop: 0

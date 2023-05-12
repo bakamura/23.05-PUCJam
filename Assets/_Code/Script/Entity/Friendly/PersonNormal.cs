@@ -18,6 +18,7 @@ public class PersonNormal : EntityProperties {
 
     private void GiveKey() {
         FindObjectOfType<P_EProperties>().KeyAmount++;
+        FindObjectOfType<HUD>().UpdateKey();
         _onStand.RemoveListener(GiveKey);
     }
 }
