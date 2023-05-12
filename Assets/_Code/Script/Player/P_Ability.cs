@@ -30,6 +30,7 @@ public class P_Ability : Singleton<P_Ability> {
     [Header("Interact")]
 
     [SerializeField] private float _interactRange;
+    [SerializeField] private float _interactDuration;
     [SerializeField] private LayerMask _interactLayer;
     private Interactable _nearestInteractable;
 
@@ -55,10 +56,11 @@ public class P_Ability : Singleton<P_Ability> {
     private WaitForSeconds _healRecoilWait;
     private WaitForSeconds _dodgeIFrameWait;
     private WaitForSeconds _dodgeRecoilWait;
+    private WaitForSeconds _interactWait;
 
     private void Start() {
         GameObject go = Instantiate(_healEffect); // Pool of only one
-        _healEffect = go; 
+        _healEffect = go;
         _healEffect.SetActive(false);
         _healEffectRenderer = _healEffect.GetComponent<SpriteRenderer>();
 
@@ -68,6 +70,7 @@ public class P_Ability : Singleton<P_Ability> {
         _healRecoilWait = new WaitForSeconds(P_Animation.Instance.GetAnimationDuration(P_Animation.P_HEAL) - _healDelay);
         _dodgeIFrameWait = new WaitForSeconds(_dodgeIFrameDuration);
         _dodgeRecoilWait = new WaitForSeconds(P_Animation.Instance.GetAnimationDuration(P_Animation.P_DODGE) - _dodgeIFrameDuration);
+        _interactWait = new WaitForSeconds(_interactDuration);
     }
 
     private void Update() {
@@ -125,14 +128,18 @@ public class P_Ability : Singleton<P_Ability> {
                 }
             }
         }
-        _nearestInteractable?.Interacted();
+        Debug.Log(_nearestInteractable ? _nearestInteractable.name : "No Interactable Found");
+        if (_nearestInteractable) StartCoroutine(Interact());
     }
 
     private IEnumerator Interact() {
         _onInteract?.Invoke();
         P_Movement.Instance.enabled = false;
+        _nearestInteractable.Interacted();
 
-        yield return null;
+        yield return _interactWait;
+
+        P_Movement.Instance.enabled = true;
     }
 
     private IEnumerator EnterDoor() {

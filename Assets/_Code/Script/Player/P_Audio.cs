@@ -1,18 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+public class P_Audio : AudioHandler {
 
-public class P_Audio : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    private const string P_JUMP = "P_Jump";
+
+
+    private void Start() {
+        P_Movement.Instance.OnJump.AddListener(JumpSFX);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    private void JumpSFX() {
+        PlaySound(P_JUMP);
     }
 }
