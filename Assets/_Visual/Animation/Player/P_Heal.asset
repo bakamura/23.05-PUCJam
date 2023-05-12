@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: P_Heal
   m_EditorClassIdentifier: 
   sprites:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  speed: 4
+  - {fileID: -1684360537, guid: b4924811fd8cf08458c715e824401925, type: 3}
+  - {fileID: -1533424601, guid: b4924811fd8cf08458c715e824401925, type: 3}
+  - {fileID: 627923210, guid: b4924811fd8cf08458c715e824401925, type: 3}
+  - {fileID: 862763704, guid: b4924811fd8cf08458c715e824401925, type: 3}
+  - {fileID: 1082682988, guid: b4924811fd8cf08458c715e824401925, type: 3}
+  speed: 8
   loop: 0
