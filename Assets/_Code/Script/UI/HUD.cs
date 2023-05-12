@@ -145,7 +145,7 @@ public class HUD : UI {
         P_EProperties.Instance.TakeHeal(10);
 
         while (_fadeCanvas.alpha > 0) { //
-            _fadeCanvas.alpha -= Time.deltaTime / _fadeHalfDuration; //
+            _fadeCanvas.alpha -= Time.deltaTime / _fadeHalfDuration; // 
 
             yield return null;
         }

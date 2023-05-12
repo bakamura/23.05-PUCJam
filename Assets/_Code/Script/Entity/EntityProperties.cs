@@ -40,16 +40,18 @@ public class EntityProperties : MonoBehaviour {
     }
 
     public void TakeDamage(int damage) {
-        if (damage <= 0) {
-            Debug.LogWarning("Damage cannot be a negative value!");
-            return;
+        if (_healthCurrent > 0) {
+            if (damage <= 0) {
+                Debug.LogWarning("Damage cannot be a negative value!");
+                return;
+            }
+            _healthCurrent = Mathf.Clamp(_healthCurrent - damage, 0, _healthMax);
+            _onDamaged?.Invoke();
+            if (_healthCurrent <= 0) {
+                _onFallen?.Invoke();
+                _standing = true;
+            }
+            _onHealthChange?.Invoke();
         }
-        _healthCurrent = Mathf.Clamp(_healthCurrent - damage, 0, _healthMax);
-        _onDamaged?.Invoke();
-        if (_healthCurrent <= 0) {
-            _onFallen?.Invoke();
-            _standing = true;
-        }
-        _onHealthChange?.Invoke();
     }
 }
