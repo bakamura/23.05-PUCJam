@@ -125,7 +125,7 @@ public class P_Ability : Singleton<P_Ability> {
                 }
             }
         }
-        //_nearestInteractable.
+        _nearestInteractable?.Interacted();
     }
 
     private IEnumerator Interact() {

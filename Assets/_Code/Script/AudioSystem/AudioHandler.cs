@@ -11,11 +11,11 @@ public abstract class AudioHandler : MonoBehaviour {
     private AudioSource _as;
     private int _sfxIDCache;
 
-    private void Awake() {
+    protected virtual void Awake() {
         _as = GetComponent<AudioSource>();
     }
 
-    private void PlaySound(string name) {
+    protected void PlaySound(string name) {
         if (_SFXDict.TryGetValue(name, out _sfxIDCache)) {
             _as.clip = _SFXs[_sfxIDCache];
             _as.Play();
