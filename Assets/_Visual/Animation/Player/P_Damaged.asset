@@ -13,9 +13,8 @@ MonoBehaviour:
   m_Name: P_Damaged
   m_EditorClassIdentifier: 
   sprites:
-  - {fileID: 21300000, guid: 197997b2d0f251c4eb876017430d234f, type: 3}
-  - {fileID: 21300000, guid: 197997b2d0f251c4eb876017430d234f, type: 3}
-  - {fileID: 21300000, guid: 197997b2d0f251c4eb876017430d234f, type: 3}
-  - {fileID: 21300000, guid: 197997b2d0f251c4eb876017430d234f, type: 3}
-  speed: 8
+  - {fileID: -1058367790, guid: f8552163ac8e8be48bc3476040e638ee, type: 3}
+  - {fileID: -637507509, guid: f8552163ac8e8be48bc3476040e638ee, type: 3}
+  - {fileID: -1160848664, guid: f8552163ac8e8be48bc3476040e638ee, type: 3}
+  speed: 6
   loop: 0

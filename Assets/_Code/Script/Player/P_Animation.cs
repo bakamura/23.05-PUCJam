@@ -17,7 +17,7 @@ public class P_Animation : AnimationHandler {
     public const string P_HEAL = "P_Heal";
     public const string P_DODGE = "P_Dodge";
     public const string P_INTERACT = "P_Interact";
-    private const string P_ENTERDOOR = "P_EnterDoor";
+    //private const string P_ENTERDOOR = "P_EnterDoor";
 
     protected override void Awake() {
         base.Awake();
@@ -31,21 +31,23 @@ public class P_Animation : AnimationHandler {
 
     private void Start() {
         GetComponent<P_Movement>().OnJump.AddListener(JumpAnimation);
-        P_EProperties properties = GetComponent<P_EProperties>();
-        properties.OnDamaged.AddListener(DamagedAnimation);
-        properties.OnFallen.AddListener(FallenAnimation);
+        P_EProperties.Instance.OnDamaged.AddListener(DamagedAnimation);
+        P_EProperties.Instance.OnFallen.AddListener(FallenAnimation);
         P_Ability abilities = GetComponent<P_Ability>();
         abilities.OnHeal.AddListener(HealAnimation);
         abilities.OnDodge.AddListener(DodgeAnimation);
+        abilities.OnInteract.AddListener(InteractAnimation);
     }
 
     private void Update() {
-        if(InputHandler.Instance.Movement != 0) _sr.flipX = InputHandler.Instance.Movement < 0;
-        if (P_Movement.Instance.PlayerGrounded() && _animation[_currentAnimation].name != P_JUMP) {
-            if (InputHandler.Instance.Movement == 0) ChangeAnimation(P_IDLE);
-            else ChangeAnimation(P_RUN);
+        if (P_EProperties.Instance.HealthCurrent > 0 && P_Movement.Instance.enabled) {
+            if (InputHandler.Instance.Movement != 0) _sr.flipX = InputHandler.Instance.Movement < 0;
+            if (P_Movement.Instance.PlayerGrounded() && _animation[_currentAnimation].name != P_JUMP) {
+                if (InputHandler.Instance.Movement == 0) ChangeAnimation(P_IDLE);
+                else ChangeAnimation(P_RUN);
+            }
+            else if (P_Movement.Instance.RigidBody2D.velocity.y <= 0) ChangeAnimation(P_FALL);
         }
-        else if (P_Movement.Instance.RigidBody2D.velocity.y <= 0 ) ChangeAnimation(P_FALL);
     }
 
     private void JumpAnimation() { // Could be substituted by using UnityEvent<String>
@@ -53,7 +55,7 @@ public class P_Animation : AnimationHandler {
     }
 
     private void DamagedAnimation() {
-        ChangeAnimation(P_DAMAGED);
+        if(P_EProperties.Instance.HealthCurrent > 0) ChangeAnimation(P_DAMAGED);
     }
 
     private void FallenAnimation() {
@@ -68,11 +70,11 @@ public class P_Animation : AnimationHandler {
         ChangeAnimation(P_DODGE);
     }
 
-    private void InteractAnimation() { // NEEDS TO LISTEN TO EVENT
+    private void InteractAnimation() { 
         ChangeAnimation(P_INTERACT);
     }
 
-    private void EnterDoorAnimation() { // NEEDS TO LISTEN TO EVENT
-        ChangeAnimation(P_ENTERDOOR);
-    }
+    //private void EnterDoorAnimation() { 
+    //    ChangeAnimation(P_ENTERDOOR);
+    //}
 }

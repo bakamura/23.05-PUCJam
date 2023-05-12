@@ -1,6 +1,5 @@
+using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -23,6 +22,11 @@ public class HUD : UI {
     [Header("Pause")]
 
     [SerializeField] private LayerMask _pauseLayers;
+
+    [Header("Fade")]
+
+    [SerializeField] private CanvasGroup _fadeCanvas;
+    [SerializeField] private float _fadeHalfDuration;
 
     [Header("Cache")]
 
@@ -79,6 +83,32 @@ public class HUD : UI {
                 _healthImages[i].color = Color.white;
             }
             else _healthImages[i].color = _transparent;
+        }
+    }
+
+    public void ChangeScene(int id) {
+        StartCoroutine(FadeChangeScene(id));
+    }
+
+    private IEnumerator FadeChangeScene(int sceneID) {
+        P_Movement.Instance.gameObject.SetActive(false);
+        P_Ability.Instance.gameObject.SetActive(false);
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneID, LoadSceneMode.Additive);
+
+        while (_fadeCanvas.alpha < 1 && !asyncLoad.isDone) {
+            _fadeCanvas.alpha += Time.deltaTime / _fadeHalfDuration;
+         
+            yield return null;
+        }
+
+        Scene sceneToUnload = SceneManager.GetActiveScene();
+        SceneManager.SetActiveScene(SceneManager.GetSceneByBuildIndex(sceneID));
+        SceneManager.UnloadSceneAsync(sceneToUnload);
+
+        while (_fadeCanvas.alpha > 0) {
+            _fadeCanvas.alpha -= Time.deltaTime / _fadeHalfDuration;
+
+            yield return null;
         }
     }
 }

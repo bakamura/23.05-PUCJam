@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: P_Jump
   m_EditorClassIdentifier: 
   sprites:
-  - {fileID: 21300000, guid: 0ca89b9a7fe053c45a560de140c8c310, type: 3}
-  - {fileID: 21300000, guid: 0ca89b9a7fe053c45a560de140c8c310, type: 3}
-  - {fileID: 21300000, guid: 0fdb844fc5b5c9549a0d3dea47337374, type: 3}
-  speed: 2
+  - {fileID: -1076165105, guid: e2839e124fc888b49b28817634e32eea, type: 3}
+  - {fileID: 228748017, guid: e2839e124fc888b49b28817634e32eea, type: 3}
+  speed: 3
   loop: 0

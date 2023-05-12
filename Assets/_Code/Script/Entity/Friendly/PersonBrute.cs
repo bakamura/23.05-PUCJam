@@ -71,13 +71,13 @@ public class PersonBrute : EntityProperties {
     }
 
     private void Catch() {
-        _nearestHostile.GetComponent<EntityProperties>().enabled = false; // FIND A  WAY TO GET TO DISABLE THE SPECIFIC BEHAVIOUR
+        _nearestHostile.GetComponent<HostileBehaviour>().enabled = false;
         _rb.velocity = Vector2.zero;
     }
 
     private void ReleaseHostile() {
         if (_nearestHostile != null) {
-            _nearestHostile.GetComponent<EntityProperties>().enabled = true;
+            _nearestHostile.GetComponent<HostileBehaviour>().enabled = true;
             // Unsubscribe from hostile onfall
 
             _nearestColliderDistance = _catchRange + 1;

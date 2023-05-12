@@ -13,8 +13,12 @@ MonoBehaviour:
   m_Name: P_Fallen
   m_EditorClassIdentifier: 
   sprites:
-  - {fileID: 21300000, guid: d15ebbf426844834f86b0e51a649a67c, type: 3}
-  - {fileID: 21300000, guid: d15ebbf426844834f86b0e51a649a67c, type: 3}
-  - {fileID: 21300000, guid: 4db2460c6bcce584b99fff72172cbefc, type: 3}
-  speed: 4
+  - {fileID: -277567215, guid: e62d7918f62bec647ab3a9a7e9a19653, type: 3}
+  - {fileID: -486132180, guid: e62d7918f62bec647ab3a9a7e9a19653, type: 3}
+  - {fileID: -1189290528, guid: e62d7918f62bec647ab3a9a7e9a19653, type: 3}
+  - {fileID: -676342914, guid: e62d7918f62bec647ab3a9a7e9a19653, type: 3}
+  - {fileID: -1591092865, guid: e62d7918f62bec647ab3a9a7e9a19653, type: 3}
+  - {fileID: 1312829316, guid: e62d7918f62bec647ab3a9a7e9a19653, type: 3}
+  - {fileID: 285102573, guid: e62d7918f62bec647ab3a9a7e9a19653, type: 3}
+  speed: 3.5
   loop: 0

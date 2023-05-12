@@ -17,5 +17,5 @@ MonoBehaviour:
   - {fileID: 207509871, guid: d160aa16ebc920041847b0853c5527fa, type: 3}
   - {fileID: -1625675044, guid: d160aa16ebc920041847b0853c5527fa, type: 3}
   - {fileID: -441147748, guid: d160aa16ebc920041847b0853c5527fa, type: 3}
-  speed: 4
+  speed: 8
   loop: 1
